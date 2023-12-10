@@ -122,3 +122,6 @@ SSH to machine and install below commands to install minikube and kubectl on ubu
     kubectl create namespace argocd
     kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
+#### To get pods of ArgoCD
+
+kubectl get pods -n argocd -w
