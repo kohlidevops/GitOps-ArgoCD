@@ -37,4 +37,27 @@ However, the popular GitOps tools like ArgoCD and Flux targets the Kubernetes.
 4. Auto healing of any unwanted changes -
 5. Continuous Reconciliation
 
+## Popular GitOps Tools in market
 
+1. ArgoCD
+2. Flux
+3. JenkinsX
+4. Spinnaker
+
+## GitOps Architecture
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/b2b9bf72-8ac3-4fcb-a4e8-959f7b8d7fe9)
+
+Repo Server - You have a repo server which is talking to Git.
+Application Controller -You have a application controller which is talking to kubernetes.
+These Repo server and application controller gets the information and compare the state.
+Application controller get the information from Repo server and it always tries to see if the state in Git and Kubernetes is same or not.
+API Server - You have a API server which is used for UI / CLI authentication
+DEX - You have a DEX which has the SSO capability.
+Redis - Which is used for cache - Why we beed caching? Because these are the stateful sets and these application has to be stateful sets and they have to cache the information.
+
+### Installation ways
+
+1. YAML manifests
+2. Helm
+3. Kubernetes Operator
