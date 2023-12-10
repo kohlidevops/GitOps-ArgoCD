@@ -124,4 +124,23 @@ SSH to machine and install below commands to install minikube and kubectl on ubu
 
 #### To get pods of ArgoCD
 
-kubectl get pods -n argocd -w
+    kubectl get pods -n argocd -w
+
+#### To see the services that we have created
+
+    kubectl get svc -n argocd
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/27cb1eb6-f6b5-4033-a642-a20bad4de8b1)
+
+#### To change the Cluster IP mode to NodePort node
+
+     kubectl edit svc argocd-server -n argocd
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/15b06c9b-0f04-46ad-9539-1d6e6f06c7b9)
+
+#### To create a tunnel for access the minikube cluster
+
+     minikube service argocd-server -n argocd
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/42b934ae-5846-4604-b36f-ebef604492b8)
+    
