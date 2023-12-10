@@ -116,3 +116,9 @@ SSH to machine and install below commands to install minikube and kubectl on ubu
 
     minikube start --driver=docker
     minikube status
+
+#### Install ArgoCD using manifest file
+
+    kubectl create namespace argocd
+    kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
