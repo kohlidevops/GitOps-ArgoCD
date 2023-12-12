@@ -122,25 +122,18 @@ SSH to machine and install below commands to install minikube and kubectl on ubu
     kubectl create namespace argocd
     kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-#### To get pods of ArgoCD
+#### To check the status of kubernetes pods
 
-    kubectl get pods -n argocd -w
+    watch kubectl get pods -n argocd
 
-#### To see the services that we have created
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/e09aad15-2b65-48c4-8d82-158cd19fbeed)
 
-    kubectl get svc -n argocd
+#### Forwarding ports to Access ArgoCD
 
-![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/27cb1eb6-f6b5-4033-a642-a20bad4de8b1)
+    kubectl port-forward svc/argocd-server -n argocd 8080:443 --address='0.0.0.0'
 
-#### To change the Cluster IP mode to NodePort node
+#### To access the ArgoCD portal in browser
 
-     kubectl edit svc argocd-server -n argocd
+Navigate to browser and enter - http://ec2-instance-ip:8080
 
-![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/15b06c9b-0f04-46ad-9539-1d6e6f06c7b9)
-
-#### To create a tunnel for access the minikube cluster
-
-     minikube service argocd-server -n argocd
-
-![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/42b934ae-5846-4604-b36f-ebef604492b8)
-    
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/a51cfc2b-5f1a-4ae8-8139-ac5016ddcc12)
