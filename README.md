@@ -192,4 +192,64 @@ If I click myapp in ArgoCD, then it will give overview of deployment like status
 
 ##### ArgoCD is un-opinionated - Because ArgoCD wont recommend to use specific format. You can use any format like helm format, json format, ksonnet format or kustomize format.
 
+#### To access the guestbook-ui application in browser
 
+Bydefault, this app is running with port:80.
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/f3bfe3fb-d5b0-4d34-b3fd-6244b2b4f4e8)
+
+So we can port-forward with some other port to avoid conflicting. Just use below command to access the app with port:9090
+
+    kubectl port-forward svc/guestbook-ui 9090:80 --address='0.0.0.0'
+
+Now, I can access the guestbook-ui app through browser with cluster-ip:9090
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/846fb0a5-e755-4d40-9884-9ec88d742039)
+
+This is the way to deploy the app to kubernetes cluster using ArgoCD traditional method. 
+
+Now Im going to deploy the app to kubernetes cluster using ArgoCD with help template. In order to work, I just delete the application in ArgoCD portal.
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/3259ee7d-7165-4c18-913e-967a42c792cc)
+
+After deletion, there is no running pods
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/7c13e448-d677-4cfe-b7bc-72f6af5143f4)
+
+#### To deploy the app on K8 cluster with the help of helm template
+
+Navigate to ArgoCD portal and create a new application again.
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/6cec62d5-9607-4a55-aa6d-cba27f2041f7)
+
+Repository URL is same as we have used before
+
+    https://github.com/argoproj/argocd-example-apps
+
+This time I good to go with helm-guestbook.
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/fddad233-1069-465f-a91b-7e2f6c5c95e0)
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/4d61ec6b-fb78-4d37-be67-5c7f45867767)
+
+Then create a application and check the status
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/901580db-e451-470b-bae5-2c00714df55c)
+
+Now check the K8 pods - Yup Its up and running
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/2ad05746-386d-4a71-893e-34d4be7a67d5)
+
+Its too running with port 80. So again im go to port-forward with some other port:9080.
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/ae45b1fe-cbae-4c22-912a-7e3ca7a08287)
+
+    kubectl port-forward svc/myhelmapp-helm-guestbook 9080:80 --address='0.0.0.0'
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/0ffefbe9-2f64-4618-8c3c-6703637258a0)
+
+Perfect! My app is running with port:9080. 
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/dd054b81-ec46-4e25-9935-cc56122f1b46)
+
+Now we have used helm template to deploy app on K8 cluster
