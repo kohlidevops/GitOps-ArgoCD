@@ -132,8 +132,23 @@ SSH to machine and install below commands to install minikube and kubectl on ubu
 
     kubectl port-forward svc/argocd-server -n argocd 8080:443 --address='0.0.0.0'
 
+#### To find the Login credentials
+
+Default username is "admin"
+
+To know the password, to execute below command
+
+    kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+
 #### To access the ArgoCD portal in browser
 
 Navigate to browser and enter - http://ec2-instance-ip:8080
 
 ![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/a51cfc2b-5f1a-4ae8-8139-ac5016ddcc12)
+
+#### To change the default password
+
+After login, Navigate to User infor -> change password
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/5560aa4d-c962-4bf0-b288-d6349a7158ec)
+
