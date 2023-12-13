@@ -152,3 +152,44 @@ After login, Navigate to User infor -> change password
 
 ![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/5560aa4d-c962-4bf0-b288-d6349a7158ec)
 
+#### To create an application in ArgoCD
+
+Just click - Create an Application
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/854bda20-8d6a-41b7-8d9e-38722984dbe4)
+
+    Application name - myapp
+    Project name - default
+    SYNC POLICY - Automatic
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/04b7b101-8721-43ed-9a18-3714551fbd11)
+
+You can use below GitHub repo url for ArgoCD application Repository URL
+
+    https://github.com/argoproj/argocd-example-apps
+
+    Revision - HEAD
+    Path - guestbook (You can see this project in above GitHub URL)
+    Destination - Cluster URL - https://kubernetes.default.svc (Popping up automatically)
+    Namespace - default
+    others leave as default
+
+Finally select create option to create application.
+
+Once created, the ArgoCD will pull the deployment and service yaml files of guestbook from Github and deploy to Kubenetes Cluster.
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/216c529e-3505-4835-bcdb-7514272ac1eb)
+
+If you check with Kubernetes cluster using below command
+
+    kubectl get deploy
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/23fafa63-5c3a-4e66-b09f-e5e2248c475b)
+
+If I click myapp in ArgoCD, then it will give overview of deployment like status of the deployment, service and pods
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/85c1f7cb-1ace-4e72-9e68-fe5263399168)
+
+##### ArgoCD is un-opinionated - Because ArgoCD wont recommend to use specific format. You can use any format like helm format, json format, ksonnet format or kustomize format.
+
+
