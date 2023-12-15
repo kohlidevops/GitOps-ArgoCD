@@ -131,6 +131,8 @@ SSH to machine and install below commands to install minikube and kubectl on ubu
 #### Forwarding ports to Access ArgoCD
 
     kubectl port-forward svc/argocd-server -n argocd 8080:443 --address='0.0.0.0'
+    or
+    nohup kubectl port-forward svc/argocd-server -n argocd 8080:443 --address='0.0.0.0' &
 
 #### To find the Login credentials
 
