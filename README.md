@@ -289,6 +289,16 @@ SSH to machine and install the commands below,
 
     kubectl get deploy -n default
 
+#### To access the application with the help of port forwarding
 
-    
+    kubectl get svc
+    nohup kubectl port-forward svc/guestbook-ui 9070:80 --address='0.0.0.0' &
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/2ee31ba2-3d2a-4264-a91d-d4c176137c4a)
+
+Perfect! I can access the guestbook-ui application with port:9070
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/7a28b81e-23fa-424c-ad9c-d21d07caa7a1)
+
+Thats it!
 
