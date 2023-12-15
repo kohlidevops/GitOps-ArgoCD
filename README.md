@@ -257,3 +257,38 @@ Perfect! My app is running with port:9080.
 ![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/dd054b81-ec46-4e25-9935-cc56122f1b46)
 
 Now we have used helm template to deploy app on K8 cluster
+
+Then delete the application in ArgoCD portal.
+
+### How to install ArgoCD CLI in ubuntu machine
+
+SSH to machine and install the commands below,
+
+        wget https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+        chmod +x argocd-linux-amd64
+        sudo mv argocd-linux-amd64 /usr/local/bin/argocd
+        argocd --help
+
+#### To login ArgoCD
+
+    argocd login 13.201.48.19:8080
+    username: admin
+    password: ******
+
+![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/f4737782-3c73-497b-9818-f178cefbbbc4)
+
+#### To create a app using argocd cli
+
+    argocd app create guestbook --repo https://github.com/argoproj/argocd-example-apps.git --path guestbook --dest-namespace default --dest-server https://kubernetes.default.svc     --directory-recurse
+
+#### To list the application
+
+    kubectl get application -n argocd
+
+#### To get the application deployed
+
+    kubectl get deploy -n default
+
+
+    
+
