@@ -203,6 +203,8 @@ Bydefault, this app is running with port:80.
 So we can port-forward with some other port to avoid conflicting. Just use below command to access the app with port:9090
 
     kubectl port-forward svc/guestbook-ui 9090:80 --address='0.0.0.0'
+    or
+    nohup kubectl port-forward svc/guestbook-ui 9090:80 --address='0.0.0.0' &
 
 Now, I can access the guestbook-ui app through browser with cluster-ip:9090
 
