@@ -210,7 +210,7 @@ Now, I can access the guestbook-ui app through browser with cluster-ip:9090
 
 ![image](https://github.com/kohlidevops/GitOps-ArgoCD/assets/100069489/846fb0a5-e755-4d40-9884-9ec88d742039)
 
-This is the way to deploy the app to kubernetes cluster using ArgoCD traditional method. 
+This is the way to deploy the app to kubernetes cluster using ArgoCD manifest file method. 
 
 Now Im going to deploy the app to kubernetes cluster using ArgoCD with help template. In order to work, I just delete the application in ArgoCD portal.
 
